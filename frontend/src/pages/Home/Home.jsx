@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react'
+import React, { useState, useCallback } from 'react'
 import styles from './Home.module.css'
 import ImageUploader from '../../components/ImageUploader'
 import AspectRatioSelector from '../../components/AspectRatioSelector'
@@ -48,19 +48,25 @@ const HOW_IT_WORKS = [
   },
 ]
 
+/**
+ * Maps target aspect ratio → scale factor applied to the sample image.
+ * Wider ratios zoom out (more of the scene visible), taller ratios zoom in.
+ */
+function getImgScale(w, h) {
+  const r = w / h
+  if (r > 2.0)  return 0.95   // 21:9 ultrawide  — zoom out, show more width
+  if (r > 1.5)  return 1.0    // 16:9 landscape  — natural fill
+  if (r > 1.1)  return 1.1    // 4:3  standard
+  if (r > 0.9)  return 1.2    // 1:1  square      — zoom in slightly
+  if (r > 0.65) return 1.4    // 3:4  portrait
+  return 1.6                   // 9:16 portrait    — zoom in most
+}
+
 export default function Home() {
   const [file, setFile]             = useState(null)
-  const [previewUrl, setPreviewUrl] = useState(null)
   const [mode, setMode]             = useState('preset')
-  const [targetSize, setTargetSize] = useState({ width: 1024, height: 1024 })
-
-  // Stable object URL — revoke previous one when file changes
-  useEffect(() => {
-    if (!file) { setPreviewUrl(null); return }
-    const url = URL.createObjectURL(file)
-    setPreviewUrl(url)
-    return () => URL.revokeObjectURL(url)
-  }, [file])
+  const [targetSize, setTargetSize] = useState({ width: 1920, height: 1080 })
+  const [imgError, setImgError]     = useState(false)
 
   const { loading, error, result, originalDimensions, generate, fetchDimensions, reset } =
     useImageProcess()
@@ -92,31 +98,17 @@ export default function Home() {
     reset()
   }
 
-  const outputUrl = result?.output_url
+  const outputUrl    = result?.output_url
+  const imgScale     = getImgScale(targetSize.width, targetSize.height)
 
   return (
     <div className={styles.page}>
-      {/* ── Breadcrumb ── */}
-      <div className={styles.breadcrumbBar}>
-        <div className={styles.breadcrumbInner}>
-          <nav className={styles.breadcrumb}>
-            <a href="#" className={styles.breadcrumbLink}>Apps</a>
-            <span className={styles.breadcrumbSep}>/</span>
-            <span className={styles.breadcrumbCurrent}>AI Outpainting</span>
-          </nav>
-          <a href="#" className={styles.myGenerations}>
-            My Generations
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      {/* ── Main content ── */}
       <div className={styles.wrapper}>
+
+        {/* ── Two-column card ── */}
         <div className={styles.mainCard}>
-          {/* Left panel */}
+
+          {/* Left panel — controls */}
           <div className={styles.leftPanel}>
             <div className={styles.titleBlock}>
               <h1 className={styles.titleLine1}>SEAMLESS AI</h1>
@@ -159,7 +151,9 @@ export default function Home() {
                 {error && (
                   <div className={styles.error}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
-                      <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
                     {error}
                   </div>
@@ -174,7 +168,7 @@ export default function Home() {
                     disabled={!file || loading}
                     title={!file ? 'Upload an image first' : ''}
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
                     Generate Outpainted Image
@@ -207,48 +201,42 @@ export default function Home() {
             )}
           </div>
 
-          {/* Right panel — preview */}
+          {/* Right panel — full-bleed sample / output */}
           <div className={styles.rightPanel}>
             {outputUrl ? (
               <ImagePreview outputUrl={outputUrl} originalFile={file} onReset={handleReset} />
-            ) : previewUrl ? (
-              <div className={styles.previewBox}>
-                <div
-                  className={styles.previewFrame}
-                  style={{ aspectRatio: `${targetSize.width} / ${targetSize.height}` }}
-                >
-                  <img
-                    src={previewUrl}
-                    alt="Uploaded preview"
-                    className={styles.previewImg}
-                  />
-                  <span className={styles.dimBadge}>
-                    {targetSize.width} × {targetSize.height}
-                  </span>
-                </div>
-                {loading && (
-                  <div className={styles.previewOverlay}>
-                    <div className={styles.previewSpinner} />
-                    <span>Generating…</span>
-                  </div>
-                )}
+            ) : imgError ? (
+              <div className={styles.sampleImgFallback}>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span>Drop sample-preview.jpg into /public</span>
               </div>
             ) : (
-              <div className={styles.previewPlaceholder}>
-                <div className={styles.placeholderIcon}>
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                    <rect x="3" y="3" width="18" height="18" rx="3" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
+              <>
+                <img
+                  src="/animal-eye-staring-close-up-watch-nature-generative-ai.jpg"
+                  alt="AI Outpainting sample output"
+                  className={styles.sampleImg}
+                  style={{ transform: `scale(${imgScale})` }}
+                  onError={() => setImgError(true)}
+                />
+                <div className={styles.vignette} />
+                <div className={styles.sampleBadge}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                   </svg>
+                  Sample output · {targetSize.width}×{targetSize.height}
                 </div>
-                <p className={styles.placeholderText}>Your image preview will appear here</p>
-              </div>
+              </>
             )}
           </div>
+
         </div>
 
-        {/* ── How It Works ── */}
+        {/* ── How It Works — visible on scroll ── */}
         <div className={styles.howSection}>
           <div className={styles.howDivider} />
           <h2 className={styles.howTitle}>HOW IT WORKS</h2>
@@ -262,6 +250,7 @@ export default function Home() {
             ))}
           </div>
         </div>
+
       </div>
     </div>
   )

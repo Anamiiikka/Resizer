@@ -3,7 +3,7 @@ import styles from './AspectRatioSelector.module.css'
 import { ASPECT_RATIOS, clamp } from '../../utils/imageUtils'
 
 export default function AspectRatioSelector({ onChange, disabled }) {
-  const [selected, setSelected] = useState(ASPECT_RATIOS[0])
+  const [selected, setSelected] = useState(ASPECT_RATIOS[1]) // 16:9 Landscape default
   const [customW, setCustomW] = useState(1024)
   const [customH, setCustomH] = useState(1024)
 
