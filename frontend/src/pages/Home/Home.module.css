@@ -71,12 +71,59 @@
   padding-bottom: 0;
 }
 
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .sectionTitle {
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+/* ── Mode tabs ── */
+.tabs {
+  display: flex;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab:hover:not(:disabled) {
+  color: var(--color-text);
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tabActive {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .divider {

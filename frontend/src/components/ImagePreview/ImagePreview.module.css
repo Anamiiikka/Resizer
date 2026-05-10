@@ -6,24 +6,37 @@
 
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: var(--color-text);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
 }
 
 .resetBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
   background: none;
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-sm);
-  padding: 5px 12px;
+  padding: 6px 12px;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .resetBtn:hover {
@@ -31,20 +44,78 @@
   color: var(--color-text);
 }
 
+.toggle {
+  display: flex;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+  align-self: flex-start;
+}
+
+.toggleBtn {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 14px;
+  transition: var(--transition);
+}
+
+.toggleBtn:hover {
+  color: var(--color-text);
+}
+
+.toggleActive {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
 .imageWrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
-  background: #111115;
+  background: #0d0d10;
+  position: relative;
 }
 
 .image {
   width: 100%;
-  max-height: 480px;
+  max-height: 500px;
   object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(0, 124, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  padding: 3px 10px;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.successTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-success);
 }

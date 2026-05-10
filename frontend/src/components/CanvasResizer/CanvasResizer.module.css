@@ -1,0 +1,162 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ── Scrollable stage that centres the canvas ── */
+.stage {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: #0c0c10;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  min-height: 200px;
+}
+
+/* ── Positioned wrapper so absolute handles work ── */
+.canvasWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.canvas {
+  display: block;
+  border-radius: 2px;
+}
+
+/* ── Drag handles ── */
+.handle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Horizontal (top / bottom) */
+.handleH {
+  height: 12px;
+  cursor: ns-resize;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Vertical (left / right) */
+.handleV {
+  width: 12px;
+  cursor: ew-resize;
+  flex-direction: row;
+  gap: 2px;
+}
+
+/* The visible bar inside the handle */
+.pill {
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(0,124,255,0.55);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.handle:hover .pill,
+.handle:active .pill {
+  background: var(--color-primary);
+  transform: scaleX(1.2);
+}
+
+.pillV {
+  display: block;
+  width: 4px;
+  height: 36px;
+  border-radius: 99px;
+  background: rgba(0,124,255,0.55);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.handle:hover .pillV,
+.handle:active .pillV {
+  background: var(--color-primary);
+  transform: scaleY(1.2);
+}
+
+/* Extension pixel labels */
+.extLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(0,10,30,0.75);
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.extLabelV {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ── Dimension readout ── */
+.dims {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dimGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.dimLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.dimValue {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s;
+}
+
+.dimChanged {
+  color: var(--color-primary);
+}
+
+.resetBtn {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  transition: var(--transition);
+}
+
+.resetBtn:hover {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
