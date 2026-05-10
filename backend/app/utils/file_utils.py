@@ -1,11 +1,5 @@
-import base64
-from PIL import Image
 import io
-
-
-def image_to_data_uri(image_bytes: bytes, mime_type: str = "image/jpeg") -> str:
-    encoded = base64.b64encode(image_bytes).decode("utf-8")
-    return f"data:{mime_type};base64,{encoded}"
+from PIL import Image
 
 
 def get_image_dimensions(image_bytes: bytes) -> tuple[int, int]:

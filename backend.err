@@ -1,7 +1,15 @@
 INFO:     Will watch for changes in these directories: ['C:\\Users\\hp\\Desktop\\Resizer\\backend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [8636] using WatchFiles
-INFO:     Started server process [10788]
+INFO:     Started reloader process [14640] using WatchFiles
+INFO:     Started server process [11368]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-Expected boundary character 45, got 52 at index 2
+WARNING:  WatchFiles detected changes in 'test_fal.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11368]
+INFO:     Started server process [3392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
