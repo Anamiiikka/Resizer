@@ -1,39 +1,43 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  width: 100%;
+  height: 100%;
 }
 
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
 }
 
 .title {
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-text);
-  line-height: 1.2;
 }
 
 .subtitle {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-text-secondary);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .resetBtn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8125rem;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--color-text-secondary);
   background: none;
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: 6px 12px;
+  padding: 5px 10px;
   transition: var(--transition);
   white-space: nowrap;
   flex-shrink: 0;
@@ -42,6 +46,7 @@
 .resetBtn:hover {
   border-color: var(--color-border);
   color: var(--color-text);
+  background: var(--color-surface-2);
 }
 
 .toggle {
@@ -51,16 +56,18 @@
   padding: 3px;
   gap: 2px;
   align-self: flex-start;
+  margin: 12px 18px 0;
+  flex-shrink: 0;
 }
 
 .toggleBtn {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--color-text-secondary);
   background: none;
   border: none;
   border-radius: 4px;
-  padding: 5px 14px;
+  padding: 4px 12px;
   transition: var(--transition);
 }
 
@@ -69,38 +76,43 @@
 }
 
 .toggleActive {
-  background: var(--color-surface);
+  background: var(--color-surface-3);
   color: var(--color-text);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.35);
 }
 
 .imageWrap {
-  border-radius: var(--radius-lg);
+  flex: 1;
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  background: #0d0d10;
   position: relative;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  margin: 12px 0 0;
 }
 
 .image {
   width: 100%;
-  max-height: 500px;
+  height: 100%;
   object-fit: contain;
+  max-height: 420px;
 }
 
 .badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 0.6875rem;
+  top: 10px;
+  left: 10px;
+  font-size: 0.625rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: #fff;
-  background: rgba(0, 124, 255, 0.7);
+  background: rgba(26, 110, 248, 0.65);
   backdrop-filter: blur(6px);
-  border-radius: var(--radius-lg);
-  padding: 3px 10px;
+  border-radius: 20px;
+  padding: 2px 8px;
 }
 
 .actions {
@@ -108,14 +120,17 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
 }
 
 .successTag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8125rem;
-  font-weight: 500;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--color-success);
 }
