@@ -12,7 +12,7 @@ async def process_image(image_bytes: bytes, target_width: int, target_height: in
     # Upload image to Fal CDN; returns a stable https:// URL
     image_url = await fal_client.upload_image_async(pil_image, format="png")
 
-    result = await fal_client.run_async(
+    result = await fal_client.subscribe_async(
         "fal-ai/smart-resize",
         arguments={
             "image_url": image_url,
