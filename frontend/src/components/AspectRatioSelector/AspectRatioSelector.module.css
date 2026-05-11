@@ -33,12 +33,12 @@
 
 .presetBtn:hover:not(:disabled) {
   border-color: var(--color-primary);
-  background: rgba(26, 110, 248, 0.06);
+  background: rgba(0, 124, 255, 0.06);
 }
 
 .presetBtn.active {
   border-color: var(--color-primary);
-  background: rgba(26, 110, 248, 0.1);
+  background: rgba(0, 124, 255, 0.1);
 }
 
 .presetBtn:disabled {
@@ -107,10 +107,38 @@
 }
 
 .dims {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-top: 2px;
 }
 
 .dims strong {
   color: var(--color-text);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 5px;
+  }
+
+  .presetBtn {
+    padding: 6px 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .presetLabel {
+    font-size: 0.75rem;
+  }
+
+  .presetDims {
+    font-size: 0.5625rem;
+  }
 }

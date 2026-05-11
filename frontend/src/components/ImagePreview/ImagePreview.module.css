@@ -109,7 +109,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #fff;
-  background: rgba(26, 110, 248, 0.65);
+  background: rgba(0, 124, 255, 0.65);
   backdrop-filter: blur(6px);
   border-radius: 20px;
   padding: 2px 8px;
@@ -133,4 +133,49 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--color-success);
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 10px 14px;
+  }
+
+  .title {
+    font-size: 0.8125rem;
+  }
+
+  .subtitle {
+    font-size: 0.6875rem;
+  }
+
+  .resetBtn {
+    font-size: 0.6875rem;
+    padding: 4px 8px;
+  }
+
+  .toggle {
+    margin: 10px 14px 0;
+  }
+
+  .toggleBtn {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+  }
+
+  .imageWrap {
+    margin: 10px 0 0;
+  }
+
+  .image {
+    max-height: 280px;
+  }
+
+  .actions {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .successTag {
+    font-size: 0.6875rem;
+  }
 }

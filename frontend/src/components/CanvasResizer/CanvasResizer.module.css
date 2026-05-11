@@ -160,3 +160,36 @@
   color: var(--color-text);
   border-color: var(--color-border);
 }
+
+@media (max-width: 640px) {
+  .wrapper {
+    gap: 12px;
+  }
+
+  .hint {
+    font-size: 0.75rem;
+  }
+
+  .stage {
+    padding: 18px;
+    min-height: 160px;
+  }
+
+  .pill {
+    width: 28px;
+    height: 4px;
+  }
+
+  .pillV {
+    width: 4px;
+    height: 28px;
+  }
+
+  .dims {
+    gap: 8px;
+  }
+
+  .dimValue {
+    font-size: 0.875rem;
+  }
+}

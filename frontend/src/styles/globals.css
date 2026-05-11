@@ -6,15 +6,15 @@
 
 :root {
   --color-bg: #09090b;
-  --color-bg-secondary: #111113;
-  --color-surface: #141416;
-  --color-surface-2: #1c1c1f;
-  --color-surface-3: #222226;
-  --color-border: #2a2a2e;
-  --color-border-subtle: #1e1e22;
-  --color-primary: #1a6ef8;
-  --color-primary-hover: #3580ff;
-  --color-primary-glow: rgba(26, 110, 248, 0.25);
+  --color-bg-secondary: #0a0a0c;
+  --color-surface: #0a0a0c;
+  --color-surface-2: #1e1e24;
+  --color-surface-3: #252530;
+  --color-border: #2e2e38;
+  --color-border-subtle: #1e1e24;
+  --color-primary: #007CFF;
+  --color-primary-hover: #0066dd;
+  --color-primary-glow: rgba(0, 124, 255, 0.2);
   --color-text: #ffffff;
   --color-text-secondary: #888894;
   --color-text-muted: #55555f;

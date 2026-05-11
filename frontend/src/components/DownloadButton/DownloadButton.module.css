@@ -1,23 +1,38 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 12px;
   background: var(--color-primary);
   color: #fff;
   font-size: 0.9375rem;
   font-weight: 600;
   border: none;
-  border-radius: var(--radius-md);
-  padding: 10px 20px;
-  transition: var(--transition);
+  border-radius: 12px;
+  padding: 12px 24px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 15px -3px var(--color-primary-glow), 0 4px 6px -4px var(--color-primary-glow);
 }
 
 .btn:hover:not(:disabled) {
   background: var(--color-primary-hover);
-  box-shadow: 0 0 20px var(--color-primary-glow);
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: dlSpin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dlSpin {
+  to { transform: rotate(360deg); }
 }

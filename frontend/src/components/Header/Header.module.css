@@ -20,17 +20,22 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
   text-decoration: none;
 }
 
-.logoIcon {
-  flex-shrink: 0;
+.logoImg {
+  width: 112px;
+  height: auto;
+  display: block;
 }
 
-.logoText {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
+@media (max-width: 640px) {
+  .inner {
+    padding: 0 16px;
+    height: 52px;
+  }
+
+  .logoImg {
+    width: 92px;
+  }
 }

@@ -4,10 +4,12 @@
   flex: 1;
 }
 
-/* ── Main wrapper ── */
+/* ── Main wrapper — centered, max-width like webapp apps ── */
 .wrapper {
   width: 100%;
-  padding: 0 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 24px 24px;
   display: flex;
   flex-direction: column;
 }
@@ -16,140 +18,120 @@
 .mainCard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: calc(100vh - 56px);
-  min-height: 480px;
+  height: calc(100dvh - 56px - 40px);
+  min-height: 580px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
 }
 
-/* ── Left panel (50%) ── */
+/* ── Left panel (50%) — fixed height, no scroll ── */
 .leftPanel {
-  padding: 16px 20px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
   border-right: 1px solid var(--color-border);
-  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .titleBlock {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .titleLine1 {
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.875rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.05;
   color: var(--color-text);
 }
 
 .titleLine2 {
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.875rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.05;
   color: var(--color-primary);
 }
 
 .titleDesc {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
-  max-width: 340px;
-  margin-top: 2px;
+  line-height: 1.55;
+  max-width: 380px;
+  margin-top: 4px;
 }
 
-/* ── Size mode tabs ── */
+/* ── Size section ── */
 .sizeSection {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.modeTabs {
-  display: flex;
-  background: var(--color-surface-2);
-  border-radius: var(--radius-sm);
-  padding: 3px;
-  gap: 2px;
-  align-self: flex-start;
-}
-
-.modeTab {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  background: none;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 12px;
-  transition: var(--transition);
-  white-space: nowrap;
-}
-
-.modeTab:hover:not(:disabled) {
-  color: var(--color-text);
-}
-
-.modeTab:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.modeTabActive {
-  background: var(--color-surface-3);
-  color: var(--color-text);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-}
-
-/* ── Generate button ── */
+/* ── Generate button — matches webapp Transitions/Link2Ad style ── */
 .generateBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   width: 100%;
   background: var(--color-primary);
   color: #fff;
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 600;
   border: none;
-  border-radius: var(--radius-md);
-  padding: 10px 20px;
-  transition: var(--transition-smooth);
+  border-radius: 12px;
+  padding: 12px 24px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   margin-top: auto;
+  flex-shrink: 0;
+  box-shadow: 0 10px 15px -3px var(--color-primary-glow), 0 4px 6px -4px var(--color-primary-glow);
 }
 
 .generateBtn:hover:not(:disabled) {
   background: var(--color-primary-hover);
-  box-shadow: 0 0 32px var(--color-primary-glow);
-  transform: translateY(-1px);
 }
 
 .generateBtn:disabled {
-  opacity: 0.4;
+  opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
 }
 
 .creditBadge {
-  background: rgba(255,255,255,0.15);
-  border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  padding: 2px 6px;
-  margin-left: 4px;
+  color: #fff;
+}
+
+.btnSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btnSpin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btnSpin {
+  to { transform: rotate(360deg); }
 }
 
 .helperText {
   font-size: 0.75rem;
   color: var(--color-text-muted);
   text-align: center;
+  flex-shrink: 0;
 }
 
 /* ── Error ── */
@@ -161,6 +143,7 @@
   background: rgba(251, 44, 54, 0.07);
   border: 1px solid rgba(251, 44, 54, 0.2);
   border-radius: var(--radius-md);
+  flex-shrink: 0;
   padding: 10px 14px;
   font-size: 0.8125rem;
 }
@@ -205,55 +188,138 @@
   background: var(--color-surface-3);
 }
 
-/* ── Right panel — full-bleed image (50%) ── */
+/* ── Right panel — animated canvas preview ── */
 .rightPanel {
   position: relative;
   overflow: hidden;
-  background: #000;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0, 124, 255, 0.10) 0%, transparent 70%),
+    #050507;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
 }
 
-/* The sample image fills the entire panel */
-.sampleImg {
+/* Soft grid in the background — implies "canvas / workspace" */
+.gridBackdrop {
   position: absolute;
   inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+
+/* The actual aspect-ratio frame — smoothly glides between sizes */
+.canvasFrame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a0a0c;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07) inset,
+    0 0 0 1px rgba(0, 124, 255, 0.18),
+    0 30px 80px -20px rgba(0, 124, 255, 0.45),
+    0 12px 32px -10px rgba(0, 0, 0, 0.8);
+  transition:
+    width 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+  will-change: width, height;
+}
+
+.canvasImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
-/* Depth vignette layered over the image */
-.vignette {
+/* A subtle gloss highlight that fades in once the frame settles */
+.canvasShine {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.45) 100%);
   pointer-events: none;
-  z-index: 1;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 35%),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
 }
 
-/* Badge — centred at bottom */
+/* Badge — refined glass chip, centred at bottom */
 .sampleBadge {
   position: absolute;
-  bottom: 18px;
+  bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  gap: 10px;
   color: #fff;
-  background: rgba(26, 110, 248, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(10, 10, 12, 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 7px 14px 7px 12px;
   white-space: nowrap;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(0, 124, 255, 0.12);
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary-glow), 0 0 2px var(--color-primary);
+  animation: badgePulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.8); }
+}
+
+.badgeLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.badgeDivider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.badgeDims {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.badgeTimes {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 0.75rem;
 }
 
 /* Fallback when image fails */
@@ -313,14 +379,14 @@
 
 .howCard:hover {
   border-color: var(--color-primary);
-  background: rgba(26, 110, 248, 0.04);
+  background: rgba(0, 124, 255, 0.04);
 }
 
 .howIcon {
   color: var(--color-primary);
   width: 40px;
   height: 40px;
-  background: rgba(26, 110, 248, 0.1);
+  background: rgba(0, 124, 255, 0.1);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -343,6 +409,10 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .wrapper {
+    padding: 12px 16px 24px;
+  }
+
   .mainCard {
     grid-template-columns: 1fr;
     height: auto;
@@ -352,25 +422,110 @@
   .leftPanel {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
-    padding: 22px 18px;
+    padding: 22px 20px;
+    overflow-y: visible;
   }
 
   .rightPanel {
-    height: 50vw;
-    min-height: 260px;
+    min-height: 320px;
+    height: 60vw;
+    max-height: 480px;
+    padding: 20px;
   }
 
   .howGrid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .wrapper {
-    padding: 0 14px;
+  .howCard {
+    padding: 18px;
+  }
+
+  .howSection {
+    margin-top: 28px;
+    gap: 18px;
+    padding-bottom: 40px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 10px 12px 20px;
+  }
+
   .mainCard {
     border-radius: var(--radius-lg);
+  }
+
+  .leftPanel {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .titleLine1,
+  .titleLine2 {
+    font-size: 1.25rem;
+  }
+
+  .titleDesc {
+    font-size: 0.8125rem;
+  }
+
+  .rightPanel {
+    min-height: 280px;
+    height: 70vw;
+    max-height: 420px;
+    padding: 14px;
+  }
+
+  .generateBtn {
+    padding: 11px 18px;
+    font-size: 0.875rem;
+    gap: 8px;
+  }
+
+  .helperText {
+    font-size: 0.6875rem;
+  }
+
+  .modeTab {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .sampleBadge {
+    bottom: 14px;
+    padding: 6px 12px 6px 10px;
+    gap: 8px;
+  }
+
+  .badgeLabel {
+    font-size: 0.625rem;
+    letter-spacing: 0.06em;
+  }
+
+  .badgeDims {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .titleLine1,
+  .titleLine2 {
+    font-size: 1.125rem;
+  }
+
+  .rightPanel {
+    min-height: 240px;
+    height: 80vw;
+  }
+
+  .sampleBadge .badgeLabel {
+    display: none;
+  }
+
+  .sampleBadge .badgeDivider:first-of-type {
+    display: none;
   }
 }

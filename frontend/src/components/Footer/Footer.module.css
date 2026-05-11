@@ -21,15 +21,13 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   text-decoration: none;
 }
 
-.logoText {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
+.logoImg {
+  width: 112px;
+  height: auto;
+  display: block;
 }
 
 .tagline {
@@ -63,4 +61,31 @@
 
 .domain:hover {
   color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding: 24px 16px 20px;
+  }
+
+  .top {
+    padding-bottom: 18px;
+    gap: 8px;
+  }
+
+  .logoImg {
+    width: 92px;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+  }
+
+  .bottom {
+    padding-top: 12px;
+  }
+
+  .domain {
+    font-size: 0.75rem;
+  }
 }
