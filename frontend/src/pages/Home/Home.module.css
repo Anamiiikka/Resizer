@@ -26,22 +26,22 @@
 
 /* ── Left panel (50%) ── */
 .leftPanel {
-  padding: 22px 24px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   border-right: 1px solid var(--color-border);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .titleBlock {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .titleLine1 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -49,7 +49,7 @@
 }
 
 .titleLine2 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -57,18 +57,18 @@
 }
 
 .titleDesc {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   max-width: 340px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 /* ── Size mode tabs ── */
 .sizeSection {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .modeTabs {
@@ -120,7 +120,7 @@
   font-weight: 700;
   border: none;
   border-radius: var(--radius-md);
-  padding: 11px 20px;
+  padding: 10px 20px;
   transition: var(--transition-smooth);
   margin-top: auto;
 }
