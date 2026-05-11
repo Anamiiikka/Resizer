@@ -2,20 +2,20 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 220px;
+  height: 200px;
   flex-shrink: 0;
 }
 
 .dropzone {
-  height: 220px;
+  height: 200px;
   border: 1.5px dashed var(--color-border);
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   transition: var(--transition-smooth);
   background: rgba(30, 30, 35, 0.8);
@@ -50,25 +50,25 @@
 }
 
 .primary {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text);
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .secondary {
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .hint {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--color-text-muted);
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .hiddenInput {
@@ -76,7 +76,7 @@
 }
 
 .preview {
-  height: 220px;
+  height: 200px;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--color-border);
@@ -88,7 +88,7 @@
 .previewImg {
   width: 100%;
   height: auto;
-  max-height: 168px;
+  max-height: 150px;
   object-fit: contain;
   background: rgba(10, 10, 12, 0.8);
   flex-shrink: 0;
@@ -147,18 +147,18 @@
 
 @media (max-width: 900px) {
   .wrapper {
-    height: 200px;
+    height: 180px;
     flex-shrink: 0;
   }
 
   .dropzone {
-    height: 200px;
-    padding: 20px 18px;
-    gap: 10px;
+    height: 180px;
+    padding: 18px 16px;
+    gap: 8px;
   }
 
   .preview {
-    height: 200px;
+    height: 180px;
   }
 
   .icon svg {

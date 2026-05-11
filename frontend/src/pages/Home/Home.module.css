@@ -28,26 +28,25 @@
 
 /* ── Left panel (50%) — fixed height, no scroll ── */
 .leftPanel {
-  padding: 24px 28px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   border-right: 1px solid var(--color-border);
   min-width: 0;
   min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .titleBlock {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   flex-shrink: 0;
 }
 
 .titleLine1 {
-  font-size: clamp(1.4rem, 2.2vw, 1.875rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.05;
@@ -55,7 +54,7 @@
 }
 
 .titleLine2 {
-  font-size: clamp(1.4rem, 2.2vw, 1.875rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.05;
@@ -63,18 +62,18 @@
 }
 
 .titleDesc {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
-  line-height: 1.55;
+  line-height: 1.45;
   max-width: 380px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 /* ── Size section ── */
 .sizeSection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -87,11 +86,11 @@
   width: 100%;
   background: var(--color-primary);
   color: #fff;
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 600;
   border: none;
   border-radius: 12px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   margin-top: auto;
   flex-shrink: 0;
